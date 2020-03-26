@@ -36,7 +36,8 @@ def get_lastest_page_info(latest_webpage_str):
 		'date': date[0] if len(date) > 0 else None,
 		'positive_cases': positive_cases[0] if len(positive_cases) > 0 else None,
 		'death': death[0] if len(death) > 0 else None,
-		'pending': pending[0] if len(pending) else None
+		'received': pending[0][0] if len(pending) else None,
+		'pending': pending[0][1] if len(pending) else None
 	}
 
 # find all occurences of /Programs/OPA/Pages/NR.*.aspx
@@ -51,7 +52,7 @@ dedup_url = {}
 for url in all_urls[-10:]:
 	if url not in dedup_url:
 		dedup_url[url] = True
-		print(url)
+		my_print(url)
 		content = get_webpage_content(website_url + url)
 		if content:
 			print(get_lastest_page_info(content))
