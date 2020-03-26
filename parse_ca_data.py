@@ -29,7 +29,7 @@ def get_latest_date(s1, s2):
 def get_lastest_page_info(latest_webpage_str):
 	my_print("get page info")
 	date = re.findall(r"Date:\s+(.*),\s+2020<br/>", latest_webpage_str)
-	positive_cases = re.findall(r"([,\d]+) [\\\d\w]+ Positive cases</p>", latest_webpage_str)
+	positive_cases = re.findall(r"([,\d]+)[\\\d\w\s]+Positive cases", latest_webpage_str)
 	death = re.findall(r"<p>([,\d]+) \\xe2\\x80\\x93 Deaths", latest_webpage_str)
 	pending = re.findall(r" At least ([\+,\d]+) results have been received and another ([\+,\d]+) are pending.", latest_webpage_str)
 	return {
